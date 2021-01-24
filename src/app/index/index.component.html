@@ -1,0 +1,66 @@
+<nz-layout>
+    <nz-content>
+        <div class="inner-content">
+            <div nz-row>
+                <div class="" nz-col nzSpan="8">
+                    <h2 nz-typography>Endereços</h2>
+                </div>
+                <div class="text-end" nz-col nzSpan="8" nzOffset="8">
+                    <div nz-row>
+                        <div nz-col nzSpan="12">
+                            <input nz-input placeholder="Pesquisar" [(ngModel)]="pesquisar" />
+                        </div>
+                        <div nz-col nzSpan="12">
+                            <button nz-button nzType="primary" nzSize="large" (click)="openCadastrar()">Cadastrar Endereços</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <nz-table #nzTable [nzData]="model" [nzLoading]="loading" nzTableLayout="fixed" nzSize="middle">
+                    <thead>
+                    <tr>
+                        <th>CEP</th>
+                        <th>Tipo de Logradouro</th>
+                        <th>Logradouro</th>
+                        <th>Número</th>
+                        <th>Complemento</th>
+                        <th>Bairro</th>
+                        <th>Cidade</th>
+                        <th>UF</th>
+                        <th>Opções</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of nzTable.data | filter:pesquisar">
+                            <td>{{ data.cep }}</td>
+                            <td>{{ data.logradouro_tipo }}</td>
+                            <td>{{ data.logradouro }}</td>
+                            <td>{{ data.numero }}</td>
+                            <td>{{ data.complemento }}</td>
+                            <td>{{ data.bairro }}</td>
+                            <td>{{ data.cidade }}</td>
+                            <td>{{ data.estado }}</td>
+                            <td>
+                                <nz-button-group>
+                                    <button nz-button nzType="sucess" (click)="openDetalhe(data)"><i class="fas fa-eye"></i></button>
+                                    <button nz-button nzType="sucess" (click)="openEditar(data)"><i class="fas fa-edit"></i></button>
+                                    <button nz-button nzType="danger" (click)="deletar(data)"><i class="fas fa-trash-alt"></i></button>
+                                </nz-button-group>
+                            </td>
+                        </tr>
+                    </tbody>
+                </nz-table>
+                <nz-dropdown-menu #menu="nzDropdownMenu">
+                <div class="ant-table-filter-dropdown">
+                    <div class="search-box">
+                    <input type="text" nz-input placeholder="Procurar CEP" [(ngModel)]="searchValue" />
+                    <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">
+                        Pesquisar
+                    </button>
+                    <button nz-button nzSize="small" (click)="reset()">Resetar</button>
+                    </div>
+                </div>
+            </nz-dropdown-menu>
+        </div>
+    </nz-content>
+</nz-layout>

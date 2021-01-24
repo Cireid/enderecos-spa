@@ -1,0 +1,50 @@
+<ng-container>
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+                <input nz-input formControlName="email" id="email" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>Senha</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your password!">
+                <input nz-input type="password" id="password" formControlName="password" (ngModelChange)="updateConfirmValidator()" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="checkPassword" nzRequired>Repetir Senha</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
+                <input nz-input type="password" formControlName="checkPassword" id="checkPassword" />
+                <ng-template #errorTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                        Por favor confirme a senha!
+                    </ng-container>
+                    <ng-container *ngIf="control.hasError('confirm')">
+                        As senhas são diferentes!
+                    </ng-container>
+                </ng-template>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="genero" nzRequired>Gênero</nz-form-label>
+            <nz-form-control [nzSpan]="14" nzErrorTip="Informe seu Estado">
+                <nz-select
+                id="genero"
+                formControlName="genero"
+                nzPlaceHolder="Genero"
+                (ngModelChange)="genderChange($event)"
+                >
+                <nz-option nzValue="homem" nzLabel="Homem"></nz-option>
+                <nz-option nzValue="mulher" nzLabel="Mulher"></nz-option>
+                <nz-option nzValue="Prefiro não informar" nzLabel="Prefiro não informar"></nz-option>
+                </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nz-row class="register-area" nzJustify="center">
+            <nz-form-control [nzSpan]="14" [nzOffset]="6">
+                <button nz-button nzType="primary" (click)="registrar()">Cadastrar</button>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</ng-container>
