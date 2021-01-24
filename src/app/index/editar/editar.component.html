@@ -3,7 +3,7 @@
         <nz-form-item>
             <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="cep">CEP</nz-form-label>
             <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="CEP invalido">
-            <input nz-input formControlName="cep" id="cep" />
+            <input nz-input formControlName="cep" id="cep" (change)="pesquisarCep(validateForm.get('cep').value)" />
         </nz-form-control>
         </nz-form-item>
         <nz-form-item>
@@ -20,10 +20,9 @@
         <nz-form-item>
             <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="logradouro_tipo" nzRequired>Tipo</nz-form-label>
             <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Informe o tipo do Logradouro">
-                <input nz-input type="text" id="logradouro_tipo" formControlName="logradouro_tipo" (ngModelChange)="updateConfirmValidator()" />
+                <input nz-input type="text" id="logradouro_tipo" formControlName="logradouro_tipo" />
             </nz-form-control>
         </nz-form-item>
-
         <nz-form-item>
             <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="numero" nzRequired>
                 <span>Número</span>
