@@ -35,6 +35,24 @@ export class CadastraComponent implements OnInit {
     })
   }
 
+  pesquisarCep(cep) {
+    this.service.pesquisarCep(cep).subscribe((resposta:any) => {
+        console.log(resposta);
+
+        this.validateForm.patchValue({
+            endereco: resposta.logradouro,
+            numero: resposta.numero,
+            complemento: resposta.complemento,
+            cep: resposta.cep ,
+            bairro: resposta.bairro,
+            cidade: resposta.cidade.nome,
+            estado: resposta.estado.sigla,
+            latitude: resposta.latitude,
+            longitude: resposta.longitude
+        });
+    });
+}
+
   salvar(){
     if(this.validateForm.valid){
       

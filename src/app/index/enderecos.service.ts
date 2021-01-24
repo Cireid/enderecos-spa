@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
@@ -35,6 +35,17 @@ export class EnderecosService {
 
   apagar(id: number): Promise<any>{
     return this.httpClient.delete(`${this.url}/apagar/${id}`).toPromise();
+  }
+
+  pesquisarCep(cep: any){
+    const headers = {
+      headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': 'Token token=9bd411a890b12311d7a6c4631d9d8c4d'
+      })
+    };
+
+    return this.httpClient.get(`https://cors-anywhere.herokuapp.com/https://www.cepaberto.com/api/v3/cep?cep=${cep}`, headers)
   }
 
 }

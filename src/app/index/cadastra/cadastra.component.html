@@ -3,7 +3,7 @@
         <nz-form-item>
             <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="cep">CEP</nz-form-label>
             <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="CEP invalido">
-            <input nz-input formControlName="cep" id="cep" />
+            <input nz-input formControlName="cep" id="cep" (change)="pesquisarCep(validateForm.get('cep').value)" />
         </nz-form-control>
         </nz-form-item>
         <nz-form-item>
