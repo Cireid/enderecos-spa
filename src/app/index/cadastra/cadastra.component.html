@@ -3,13 +3,13 @@
         <nz-form-item>
             <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="cep">CEP</nz-form-label>
             <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="CEP invalido">
-            <input nz-input formControlName="cep" id="cep" (change)="pesquisarCep(validateForm.get('cep').value)" />
+            <input nz-input formControlName="cep" id="cep" />
         </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="log" nzRequired>Logradouro</nz-form-label>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="logradouro" nzRequired>Logradouro</nz-form-label>
                 <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
-                    <input nz-input type="log" formControlName="log" id="log" />
+                    <input nz-input type="logradouro" formControlName="logradouro" id="log" />
                     <ng-template #errorTpl let-control>
                         <ng-container *ngIf="control.hasError('required')">
                             Informe o Logradouro
@@ -18,79 +18,55 @@
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="logType" nzRequired>Tipo</nz-form-label>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="logradouro_tipo" nzRequired>Tipo</nz-form-label>
             <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Informe o tipo do Logradouro">
-                <input nz-input type="text" id="logType" formControlName="logType" (ngModelChange)="updateConfirmValidator()" />
+                <input nz-input type="text" id="logradouro_tipo" formControlName="logradouro_tipo" (ngModelChange)="updateConfirmValidator()" />
             </nz-form-control>
         </nz-form-item>
 
         <nz-form-item>
-            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="number" nzRequired>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="numero" nzRequired>
                 <span>Número</span>
             </nz-form-label>
             <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Insira o numero da casa">
-                <input nz-input id="number" formControlName="number" />
+                <input nz-input id="numero" formControlName="numero" />
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="complement" nzRequired>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="complemento" nzRequired>
                 <span>Complemento</span>
             </nz-form-label>
             <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Insira o complemento">
-                <input nz-input id="complement" formControlName="complement" />
+                <input nz-input id="complemento" formControlName="complemento" />
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="neighbor" nzRequired>Bairro</nz-form-label>
-            <nz-form-control [nzSpan]="14" nzErrorTip="Informe seu bairro">
-                <nz-select
-                id="neighbor"
-                formControlName="neighbor"
-                nzPlaceHolder="selecione seu bairro"
-                (ngModelChange)="genderChange($event)"
-                >
-                <nz-option nzValue="manaira" nzLabel="Manaira"></nz-option>
-                <nz-option nzValue="torre" nzLabel="Torre"></nz-option>
-                <nz-option nzValue="bancarios" nzLabel="Bancarios"></nz-option>
-                <nz-option nzValue="mangabeira" nzLabel="Mangabeira"></nz-option>
-                </nz-select>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="bairro" nzRequired>
+                <span>Bairro</span>
+            </nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Insira o seu bairro">
+                <input nz-input id="bairro" formControlName="bairro" />
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="city" nzRequired>Cidade</nz-form-label>
-            <nz-form-control [nzSpan]="14" nzErrorTip="Informe sua Cidade">
-                <nz-select
-                id="city"
-                formControlName="city"
-                nzPlaceHolder="selecione sua Cidade"
-                (ngModelChange)="genderChange($event)"
-                >
-                <nz-option nzValue="joão jessoa" nzLabel="João Pessoa"></nz-option>
-                <nz-option nzValue="patos" nzLabel="Patos"></nz-option>
-                <nz-option nzValue="cg" nzLabel="Campina Grande"></nz-option>
-                <nz-option nzValue="guarabira" nzLabel="Guarabira"></nz-option>
-                </nz-select>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cidade" nzRequired>
+                <span>cidade</span>
+            </nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Insira a sua cidade">
+                <input nz-input id="cidade" formControlName="cidade" />
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="uf" nzRequired>UF</nz-form-label>
-            <nz-form-control [nzSpan]="14" nzErrorTip="Informe seu Estado">
-                <nz-select
-                id="uf"
-                formControlName="uf"
-                nzPlaceHolder="selecione seu Estado"
-                (ngModelChange)="genderChange($event)"
-                >
-                <nz-option nzValue="paraiba" nzLabel="Paraíba"></nz-option>
-                <nz-option nzValue="pernambuco" nzLabel="Pernambuco"></nz-option>
-                <nz-option nzValue="alagoas" nzLabel="Alagoas"></nz-option>
-                <nz-option nzValue="bahia" nzLabel="Bahia"></nz-option>
-                </nz-select>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="estado" nzRequired>
+                <span>Estado</span>
+            </nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Insira o seu estado">
+                <input nz-input id="estado" formControlName="estado" />
             </nz-form-control>
         </nz-form-item>
         <nz-form-item nz-row class="register-area">
             <nz-form-control [nzSpan]="14" [nzOffset]="6">
-                <button nz-button nzType="primary">Cadastrar</button>
+                <button nz-button nzType="primary">Salvar</button>
             </nz-form-control>
         </nz-form-item>
     </form>
